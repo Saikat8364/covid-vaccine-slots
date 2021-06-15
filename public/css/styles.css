@@ -1,0 +1,19 @@
+
+body{
+  background-color: #FFD8CC;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+  div{
+  padding-top: 1rem;
+  text-align: center;
+  padding-bottom: 3rem;
+  background-color: #FFD8CC;
+}
+h1{
+  padding: 1rem 0;
+  font-family: 'Oswald', sans-serif;
+}
+.container{
+  text-align: center;
+  }

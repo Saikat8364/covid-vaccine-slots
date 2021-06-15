@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Saikat Cowin API</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Covid 19 Vaccine Avaibility - Kolkata</h1>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th style="width:25%">Center Name</th>
+            <th style="width:25%">Center Address</th>
+            <th>Date</th>
+            <th>Vaccine Name</th>
+            <th>Age Group</th>
+            <th>Available Dose 1</th>
+            <th>Available Dose 2</th>
+            <th>Fees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%data.sort(function(a,b){return a.sessions.available_capacity-b.sessions.available_capacity})%>
+          <%data.forEach(function(item){%>
+            <%item.sessions.forEach(function(sess){ %>
+              <%if(sess.available_capacity>0){ %>
+                <% var n = sess.length%>
+              <tr>
+                <td rowspan=n>
+                <%=item.name%>
+                </td>
+                <td rowspan=n>
+                <%= item.address%>
+                </td>
+                <%break;%>
+                <%}%>
+                <%})%>
+                <%item.sessions.forEach(function(sess){ %>
+                <%if(sess.available_capacity>0){ %>
+                <td>
+                <%= sess.date%>
+                </td>
+                <td>
+                <%= sess.vaccine%>
+                </td>
+                <td>
+                <%= sess.min_age_limit+"+"%>
+                </td>
+                <td>
+                <%= sess.available_capacity_dose1%>
+                </td>
+                <td>
+                <%= sess.available_capacity_dose2%>
+                </td>
+                <td>
+                <%="₹"+item.vaccine_fees[0].fee%>
+                </td>
+              </tr>
+              <%}%>
+              <%})%>
+            <% })%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
