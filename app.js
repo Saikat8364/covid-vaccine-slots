@@ -15,7 +15,24 @@ app.get('/', function(req,res){
 });
 app.post('/', function (req,res){
   var today=new Date();
-  var date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+  if(today.getDate()<10){
+    if((today.getMonth()+1)<10){
+      var date = '0'+today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+      console.log("First Condition"+date);
+    }else{
+      var date = '0'+today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+      console.log("Second Condition"+date);
+    }
+  }else{
+    if((today.getMonth()+1)<10){
+      var date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+      console.log("Third Condition"+date);
+    }else{
+      var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+      console.log("Fourth Condition"+date);
+    }
+  }
+
   var dis=req.body.dis;
   var disid=0;
   var name="";
