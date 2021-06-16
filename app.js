@@ -145,6 +145,11 @@ app.post('/', function (req,res){
 
 
 });
+
+app.post("/home",function(req,res){
+  res.redirect("/");
+});
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
