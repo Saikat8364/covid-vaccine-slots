@@ -56,7 +56,12 @@
                     <%if(item.fee_type=="Free"){%>
                       <%="Free"%>
                     <%}else{%>
-                      <%="₹"+item.vaccine_fees[0].fee%>
+                      <% item.vaccine_fees.forEach(function(vac){%>
+                          <%if(vac.vaccine==sess.vaccine){%>
+                            <%="₹"+vac.fee%>
+                          <%}%>
+                      <%}) %>
+
                     <%}%>
 
                   </td>
