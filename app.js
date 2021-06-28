@@ -138,7 +138,11 @@ app.post('/', function (req,res){
         if(count==0){
           res.render("noslots",{title:name});
         }else{
-          res.render("index",{data:data.centers,title:name});
+          var items=data.centers;
+          items.sort(function (a, b) {
+            return ('' + a.name).localeCompare(b.name);
+          });
+          res.render("index",{data:items,title:name});
         }
 
       }).catch(err => console.error(err));
